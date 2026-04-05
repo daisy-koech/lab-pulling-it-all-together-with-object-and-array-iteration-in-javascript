@@ -114,3 +114,97 @@ function gameObject() {
         },
     };
 }
+
+function numPointsScored (playerName) {
+    const game = gameObject();
+   
+    if (game.home.players[playerName]) {
+        return game.home.players[playerName].points;
+    }
+    else if (game.away.players[playerName]) {
+        return game.away.players[playerName].points;
+    }
+    else {
+        return null;
+    }
+}
+// console.log(numPointsScored("Jason Terry"));
+
+function shoeSize (playerName) {
+    const game = gameObject();
+
+     if (game.home.players[playerName]) {
+        return game.home.players[playerName].shoe;
+    }
+    else if (game.away.players[playerName]) {
+        return game.away.players[playerName].shoe;
+    }
+    else {
+        return null;
+    }
+}
+// console.log(shoeSize("Brendan Hayword"));
+
+function teamColors (teamName){
+    const game = gameObject();
+    const teams = {
+        [game.home.teamName]: game.home.colors,
+        [game.away.teamName]: game.away.colors
+    }
+    return teams[teamName];
+}
+// console.log(teamColors("Charlotte Hornets"));
+
+function teamNames () {
+    const game = gameObject();
+    return [game.home.teamName, game.away.teamName];
+}
+// console.log(teamNames());
+
+function playerNumbers (teamName) {
+    const game = gameObject();
+
+    let teamPlayers;
+    if (teamName === game.home.teamName) {
+        teamPlayers = game.home.players;
+    }
+    else if (teamName === game.away.teamName) {
+        teamPlayers = game.away.players;
+    }
+    else {
+        return [];
+    }
+
+    const numbers = [];
+    for (let player in teamPlayers) {
+        numbers.push(teamPlayers[player].number);
+    }
+    return numbers;
+}
+// console.log(playerNumbers("Charlotte Hornets"));
+
+function playerStats (playerName) {
+    const game = gameObject();
+
+     if (game.home.players[playerName]) {
+        return game.home.players[playerName];
+    }
+    else if (game.away.players[playerName]) {
+        return game.away.players[playerName];
+    }
+    else {
+        return null;
+    }
+}
+// console.log(playerStats("Brendan Hayword"));
+
+// function bigShoeRebounds () {
+//     const game = gameObject();
+
+//     const allPlayers = {
+//         ...game.home.players,
+//         ...game.away.players
+//     }
+//    let largestShoeSize = 0;
+   
+// }
